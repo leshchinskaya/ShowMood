@@ -9,7 +9,12 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    var accessToken = ""
 
+    @IBAction func nextButton() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

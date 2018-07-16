@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0CDA3F20FD096B009356B9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */; };
+		CD0CDA4320FD09B1009356B9 /* ChangeMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4220FD09B1009356B9 /* ChangeMoodViewController.swift */; };
+		CD0CDA4720FD0A95009356B9 /* ShowImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */; };
+		CD0CDA4D20FD115D009356B9 /* InstaConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */; };
+		CD0CDA4F20FD116F009356B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4E20FD116F009356B9 /* LoginViewController.swift */; };
 		CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */; };
-		CDDE8FAF20FD04DA00462078 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE8FAE20FD04DA00462078 /* ViewController.swift */; };
 		CDDE8FB220FD04DA00462078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB020FD04DA00462078 /* Main.storyboard */; };
 		CDDE8FB420FD04DD00462078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB320FD04DD00462078 /* Assets.xcassets */; };
 		CDDE8FB720FD04DD00462078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB520FD04DD00462078 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		CD0CDA4220FD09B1009356B9 /* ChangeMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMoodViewController.swift; sourceTree = "<group>"; };
+		CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagesCollectionViewController.swift; sourceTree = "<group>"; };
+		CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaConstant.swift; sourceTree = "<group>"; };
+		CD0CDA4E20FD116F009356B9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ShowMood/Controller/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		CDDE8FA920FD04DA00462078 /* ShowMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDDE8FAE20FD04DA00462078 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CDDE8FB120FD04DA00462078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDDE8FB320FD04DD00462078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDDE8FB620FD04DD00462078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +43,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD0CDA3B20FD081D009356B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD0CDA4B20FD115D009356B9 /* Instagram Auth */,
+				CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */,
+				CD0CDA4220FD09B1009356B9 /* ChangeMoodViewController.swift */,
+				CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CD0CDA4B20FD115D009356B9 /* Instagram Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CD0CDA4E20FD116F009356B9 /* LoginViewController.swift */,
+				CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */,
+			);
+			path = "Instagram Auth";
+			sourceTree = "<group>";
+		};
 		CDDE8FA020FD04DA00462078 = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +82,8 @@
 		CDDE8FAB20FD04DA00462078 /* ShowMood */ = {
 			isa = PBXGroup;
 			children = (
+				CD0CDA3B20FD081D009356B9 /* Controller */,
 				CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */,
-				CDDE8FAE20FD04DA00462078 /* ViewController.swift */,
 				CDDE8FB020FD04DA00462078 /* Main.storyboard */,
 				CDDE8FB320FD04DD00462078 /* Assets.xcassets */,
 				CDDE8FB520FD04DD00462078 /* LaunchScreen.storyboard */,
@@ -135,8 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDDE8FAF20FD04DA00462078 /* ViewController.swift in Sources */,
+				CD0CDA4F20FD116F009356B9 /* LoginViewController.swift in Sources */,
+				CD0CDA4320FD09B1009356B9 /* ChangeMoodViewController.swift in Sources */,
 				CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */,
+				CD0CDA4D20FD115D009356B9 /* InstaConstant.swift in Sources */,
+				CD0CDA3F20FD096B009356B9 /* WelcomeViewController.swift in Sources */,
+				CD0CDA4720FD0A95009356B9 /* ShowImagesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
