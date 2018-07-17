@@ -1,0 +1,1 @@
+VisualSentimentCNN.mlmodel download - https://coreml.store/visualsentimentcnn
