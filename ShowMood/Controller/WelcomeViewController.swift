@@ -11,6 +11,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     var accessToken = ""
+    var right = 0, left = 0
 
     @IBAction func nextButton() {
     }
@@ -18,7 +19,9 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        assignbackground()
+        // Add a background view
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fon.jpg")!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +29,18 @@ class WelcomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func assignbackground(){
+        let background = UIImage(named: "fon")
+        
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubview(toBack: imageView)
+    }
 
     /*
     // MARK: - Navigation

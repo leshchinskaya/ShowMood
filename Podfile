@@ -6,5 +6,7 @@ target 'ShowMood' do
   use_frameworks!
 
   # Pods for ShowMood
+  pod ‘Alamofire’, ‘~> 4.6’
+  pod ’SwiftyJSON’
 
 end

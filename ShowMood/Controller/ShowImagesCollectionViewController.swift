@@ -11,10 +11,16 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ShowImagesCollectionViewController: UICollectionViewController {
+    
+    var accessToken = ""
+    var right = 0, left = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        assignbackground()
+        
+        print (left, "..", right, " / accessToken = ", accessToken)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,6 +34,20 @@ class ShowImagesCollectionViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func assignbackground(){
+        let background = UIImage(named: "fon")
+        
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        self.collectionView?.backgroundView = imageView
+    }
+
 
     /*
     // MARK: - Navigation
