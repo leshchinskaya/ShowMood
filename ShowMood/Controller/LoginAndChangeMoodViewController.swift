@@ -160,6 +160,10 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
             showVC.accessToken = accessToken
             //navigation.pushViewController(showVC, animated: true)
 
+        } else if (segue.identifier == "cameraIdentifier") {
+            print("cameraIdentifier")
+            let cameraVC = segue.destination as! CameraViewController
+            cameraVC.accessToken = accessToken
         }
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.

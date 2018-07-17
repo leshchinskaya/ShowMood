@@ -12,6 +12,8 @@
 		CD0CDA4720FD0A95009356B9 /* ShowImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */; };
 		CD0CDA4D20FD115D009356B9 /* InstaConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */; };
 		CD0CDA6420FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0CDA6320FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift */; };
+		CD52B50920FE4A780015EFE8 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B50820FE4A780015EFE8 /* CameraViewController.swift */; };
+		CD52B50C20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CD52B50B20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel */; };
 		CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */; };
 		CDDE8FB220FD04DA00462078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB020FD04DA00462078 /* Main.storyboard */; };
 		CDDE8FB420FD04DD00462078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB320FD04DD00462078 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstaConstant.swift; sourceTree = "<group>"; };
 		CD0CDA6320FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndChangeMoodViewController.swift; sourceTree = "<group>"; };
+		CD52B50820FE4A780015EFE8 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		CD52B50B20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VisualSentimentCNN.mlmodel; sourceTree = "<group>"; };
 		CDDE8FA920FD04DA00462078 /* ShowMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDDE8FB120FD04DA00462078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */,
 				CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */,
 				CD0CDA6320FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift */,
+				CD52B50820FE4A780015EFE8 /* CameraViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -80,6 +85,14 @@
 				CD0CDA4C20FD115D009356B9 /* InstaConstant.swift */,
 			);
 			path = "Instagram Auth";
+			sourceTree = "<group>";
+		};
+		CD52B50A20FE4B730015EFE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD52B50B20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CDDE8FA020FD04DA00462078 = {
@@ -103,6 +116,7 @@
 		CDDE8FAB20FD04DA00462078 /* ShowMood */ = {
 			isa = PBXGroup;
 			children = (
+				CD52B50A20FE4B730015EFE8 /* Model */,
 				CD0CDA3B20FD081D009356B9 /* Controller */,
 				CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */,
 				CDDE8FB020FD04DA00462078 /* Main.storyboard */,
@@ -228,10 +242,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */,
+				CD52B50C20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel in Sources */,
 				CD0CDA4D20FD115D009356B9 /* InstaConstant.swift in Sources */,
 				CD0CDA6420FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift in Sources */,
 				CD0CDA3F20FD096B009356B9 /* WelcomeViewController.swift in Sources */,
 				CD0CDA4720FD0A95009356B9 /* ShowImagesCollectionViewController.swift in Sources */,
+				CD52B50920FE4A780015EFE8 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
