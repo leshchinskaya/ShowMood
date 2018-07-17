@@ -70,11 +70,6 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
         unSignedRequest()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - unSignedRequest
     func unSignedRequest () {
         let authURL = String(format: "%@?client_id=%@&redirect_uri=%@&response_type=token&scope=%@&DEBUG=True", arguments: [INSTAGRAM_IDS.INSTAGRAM_AUTHURL,INSTAGRAM_IDS.INSTAGRAM_CLIENT_ID,INSTAGRAM_IDS.INSTAGRAM_REDIRECT_URI, INSTAGRAM_IDS.INSTAGRAM_SCOPE ])
@@ -105,6 +100,7 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
         welcomeVC.accessToken = accessToken
         
         loginWebView.isHidden = true
+        
     }
     
     

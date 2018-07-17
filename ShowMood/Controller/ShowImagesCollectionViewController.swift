@@ -14,7 +14,7 @@ class ShowImagesCollectionViewController: UICollectionViewController {
     
     var accessToken = ""
     var right = 0, left = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +28,7 @@ class ShowImagesCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +75,7 @@ class ShowImagesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        
         // Configure the cell
     
         return cell
