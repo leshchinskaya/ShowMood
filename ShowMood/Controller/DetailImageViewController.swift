@@ -18,6 +18,10 @@ class DetailImageViewController: UIViewController {
         super.viewDidLoad()
 
         self.imageView = UIImageView(frame: CGRect(x: 0, y: -320, width: self.view.bounds.size.width, height: self.view.bounds.size.width))
+        
+        imageView?.layer.cornerRadius = 20
+        imageView?.clipsToBounds = true
+        
         self.view.addSubview(imageView!)
         
         

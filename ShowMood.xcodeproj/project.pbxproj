@@ -19,6 +19,7 @@
 		CD52B51520FE85240015EFE8 /* PresentDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B51420FE85240015EFE8 /* PresentDetailTransition.swift */; };
 		CD52B51720FE853B0015EFE8 /* DismissDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B51620FE853B0015EFE8 /* DismissDetailTransition.swift */; };
 		CD52B51920FE87800015EFE8 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */; };
+		CDBB2B2820FFE5CD007FADAC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B2720FFE5CD007FADAC /* Settings.swift */; };
 		CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */; };
 		CDDE8FB220FD04DA00462078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB020FD04DA00462078 /* Main.storyboard */; };
 		CDDE8FB420FD04DD00462078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB320FD04DD00462078 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		CD52B51420FE85240015EFE8 /* PresentDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDetailTransition.swift; sourceTree = "<group>"; };
 		CD52B51620FE853B0015EFE8 /* DismissDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDetailTransition.swift; sourceTree = "<group>"; };
 		CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		CDBB2B2720FFE5CD007FADAC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CDDE8FA920FD04DA00462078 /* ShowMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDDE8FB120FD04DA00462078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		CDDE8FAB20FD04DA00462078 /* ShowMood */ = {
 			isa = PBXGroup;
 			children = (
+				CDBB2B2720FFE5CD007FADAC /* Settings.swift */,
 				CD52B50D20FE7CC90015EFE8 /* View */,
 				CD52B50A20FE4B730015EFE8 /* Model */,
 				CD0CDA3B20FD081D009356B9 /* Controller */,
@@ -268,6 +271,7 @@
 			files = (
 				CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */,
 				CD52B51120FE7D4E0015EFE8 /* InstagramData.swift in Sources */,
+				CDBB2B2820FFE5CD007FADAC /* Settings.swift in Sources */,
 				CD52B50C20FE4B730015EFE8 /* VisualSentimentCNN.mlmodel in Sources */,
 				CD0CDA4D20FD115D009356B9 /* InstaConstant.swift in Sources */,
 				CD52B51520FE85240015EFE8 /* PresentDetailTransition.swift in Sources */,

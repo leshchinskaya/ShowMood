@@ -107,13 +107,11 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     
     // Add a background view
     func assignbackground(){
-        let background = UIImage(named: "fon")
-        
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)
         imageView.contentMode =  UIViewContentMode.scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = background
+        imageView.image = Settings().background
         imageView.center = view.center
         self.collectionView?.backgroundView = imageView
     }
@@ -134,6 +132,9 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.imagesPhotoCell, for: indexPath) as! ImagesCollectionViewCell
+        
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
 
         //let photoDictionary = photoDictionaries[indexPath.item]
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
@@ -169,7 +170,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let photo = self.photoDictionaries[indexPath.row] as! NSDictionary
-        
+
         let photo = self.photoDictionariesFiltered[indexPath.row] as! NSDictionary
         
         let viewController = DetailImageViewController()
