@@ -19,11 +19,10 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     var right = 0, left = 0
     var currentPositive = 0.0
     
-    
     private let trainedImageSize = CGSize(width: 227, height: 227)
     
     private var photoDictionaries = [AnyObject]()
-    private var imagesDictionaries = [UIImage]()
+    private var photoDictionariesFiltered = [AnyObject]()
     private var img = [AnyObject]()
     var data: [[String: String?]] = []
     
@@ -38,6 +37,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add a background view
         assignbackground()
         
         print (left, "..", right, " / accessToken = ", accessToken)
@@ -46,17 +46,14 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-
-        //configure the collection view
+        
+        // Configure the collection view
         let width = (collectionView!.frame.size.width - leftAndRightPaddings) / numberOfItemsPerRow
         
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width + heightAdjustment)
         
         fetchPhotos()
-        //let dataArray = photoDictionaries.map { $0 as! UIImage }
     }
     
     // MARK: - Helper Methods
@@ -81,6 +78,19 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                         let comment = result.value(forKeyPath: "comments.count") as! Int
                         let obj = ["comments": String(comment), "likes": String(likes)]
                         
+                        let image = result.value(forKeyPath: "images.thumbnail.url") as! String
+                        print(image)
+                        
+                        let urlImage = URL(string: image)
+                        let data = try? Data(contentsOf: urlImage!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        let currentImage = UIImage(data: data!)
+                        
+                        self.predict(image: currentImage!)
+                        
+                        if (Int(self.currentPositive) >= self.left && Int(self.currentPositive) <= self.right) {
+                            self.photoDictionariesFiltered.append(result)
+                        }
+                    
                         self.data.append(obj)
                     }
                     
@@ -95,7 +105,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         task.resume()
     }
     
-    
+    // Add a background view
     func assignbackground(){
         let background = UIImage(named: "fon")
         
@@ -108,17 +118,6 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         self.collectionView?.backgroundView = imageView
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -129,30 +128,21 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.photoDictionaries.count
+        //return self.photoDictionaries.count
+        return self.photoDictionariesFiltered.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.imagesPhotoCell, for: indexPath) as! ImagesCollectionViewCell
 
-        let photoDictionary = photoDictionaries[indexPath.item]
+        //let photoDictionary = photoDictionaries[indexPath.item]
+        let photoDictionary = photoDictionariesFiltered[indexPath.item]
 
-        // Working BUT with example - "fon"
-        // CoreML
-        print("\npredict for image\n")
-        print(predict(image: UIImage(named: "fon")!))
-        
-        if (Int(currentPositive) >= left && Int(currentPositive) <= right) {
-            cell.photo = photoDictionary
-            return cell
-        }
-        
-        //cell.photo = photoDictionary
+        cell.photo = photoDictionary
         return cell
     }
     
-    func predict(image: UIImage) -> Double {
-        
+    func predict(image: UIImage) {
         let model = VisualSentimentCNN()
         
         do {
@@ -162,13 +152,10 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                 self.currentPositive = prediction.prob["Positive"] ?? 0.0
                 self.currentPositive = currentPositive * 100
                 print(currentPositive)
-                return currentPositive
             }
         } catch {
             print("Error while doing predictions: \(error)")
         }
-        
-        return 0.0
     }
     
     func resize(image: UIImage, newSize: CGSize) -> UIImage? {
