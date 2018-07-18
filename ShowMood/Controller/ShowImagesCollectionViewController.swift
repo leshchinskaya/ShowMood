@@ -168,7 +168,9 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = self.photoDictionaries[indexPath.row] as! NSDictionary
+        //let photo = self.photoDictionaries[indexPath.row] as! NSDictionary
+        
+        let photo = self.photoDictionariesFiltered[indexPath.row] as! NSDictionary
         
         let viewController = DetailImageViewController()
         viewController.modalPresentationStyle = UIModalPresentationStyle.custom
