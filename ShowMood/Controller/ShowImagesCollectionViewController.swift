@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import AVKit
+import Vision
+import CoreML
 
 private let reuseIdentifier = "Cell"
 
-class ShowImagesCollectionViewController: UICollectionViewController {
+class ShowImagesCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var accessToken = ""
     var right = 0, left = 0
+    var currentPositive = 0.0
+    
+    
+    private let trainedImageSize = CGSize(width: 227, height: 227)
     
     private var photoDictionaries = [AnyObject]()
+    private var imagesDictionaries = [UIImage]()
     private var img = [AnyObject]()
     var data: [[String: String?]] = []
     
@@ -48,6 +56,7 @@ class ShowImagesCollectionViewController: UICollectionViewController {
         layout.itemSize = CGSize(width: width, height: width + heightAdjustment)
         
         fetchPhotos()
+        //let dataArray = photoDictionaries.map { $0 as! UIImage }
     }
     
     // MARK: - Helper Methods
@@ -65,7 +74,7 @@ class ShowImagesCollectionViewController: UICollectionViewController {
                 do {
                     let responseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                     
-                    self.photoDictionaries = responseDictionary["data"] as! [AnyObject]
+                    self.photoDictionaries = responseDictionary["data"] as! [UIImage]
                     
                     for result in self.photoDictionaries {
                         let likes = result.value(forKeyPath: "likes.count") as! Int
@@ -127,12 +136,50 @@ class ShowImagesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.imagesPhotoCell, for: indexPath) as! ImagesCollectionViewCell
 
         let photoDictionary = photoDictionaries[indexPath.item]
-        cell.photo = photoDictionary
+
+        // Working BUT with example - "fon"
+        // CoreML
+        print("\npredict for image\n")
+        print(predict(image: UIImage(named: "fon")!))
+        
+        if (Int(currentPositive) >= left && Int(currentPositive) <= right) {
+            cell.photo = photoDictionary
+            return cell
+        }
+        
+        //cell.photo = photoDictionary
         return cell
+    }
+    
+    func predict(image: UIImage) -> Double {
+        
+        let model = VisualSentimentCNN()
+        
+        do {
+            if let resizedImage = resize(image: image, newSize: trainedImageSize), let pixelBuffer = resizedImage.toCVPixelBuffer() {
+                let prediction = try model.prediction(data: pixelBuffer)
+                print ("prediction value:", prediction.prob)
+                self.currentPositive = prediction.prob["Positive"] ?? 0.0
+                self.currentPositive = currentPositive * 100
+                print(currentPositive)
+                return currentPositive
+            }
+        } catch {
+            print("Error while doing predictions: \(error)")
+        }
+        
+        return 0.0
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
 
     // MARK: UICollectionViewDelegate
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = self.photoDictionaries[indexPath.row] as! NSDictionary
         
@@ -168,3 +215,32 @@ extension ShowImagesCollectionViewController: UIViewControllerTransitioningDeleg
         return DismissDetailTransition()
     }
 }
+
+// MARK: UIImage vs CVPixelBuffer
+extension UIImage {
+    func toCVPixelBuffer() -> CVPixelBuffer? {
+        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+        var pixelBuffer : CVPixelBuffer?
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(self.size.width), Int(self.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+        guard (status == kCVReturnSuccess) else {
+            return nil
+        }
+        
+        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: pixelData, width: Int(self.size.width), height: Int(self.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+        
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        
+        UIGraphicsPushContext(context!)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        UIGraphicsPopContext()
+        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        
+        return pixelBuffer
+    }
+}
+

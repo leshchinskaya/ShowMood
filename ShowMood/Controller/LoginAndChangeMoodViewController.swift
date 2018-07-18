@@ -120,7 +120,6 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
     
     // MARK: - UIWebViewDelegate
-    
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         return checkRequestForCallbackURL(request: request)
     }
@@ -128,6 +127,7 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         //loginIndicator.isHidden = false
         navigationItem.title = "Please, wait"
+        loginWebView.backgroundColor = UIColor(patternImage: UIImage(named: "fon")!)
         //loginIndicator.startAnimating()
         
     }
@@ -144,7 +144,7 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
     
      // MARK: - Navigation
-     
+
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -163,8 +163,6 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
             let cameraVC = segue.destination as! CameraViewController
             cameraVC.accessToken = accessToken
         }
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
      }
 }
 

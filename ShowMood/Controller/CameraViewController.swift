@@ -24,8 +24,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         print ("CameraVC")
         assignbackground()
-        
-        //let captureSession = AVCaptureSession()
+
         captureSession.sessionPreset = .photo
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -48,14 +47,17 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         guard let model = try? VNCoreMLModel(for: VisualSentimentCNN().model) else { return }
-        //guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
         let request = VNCoreMLRequest(model: model) { (finishedRequest, err) in
-            print(finishedRequest.results)
+            print(finishedRequest.results ?? "")
             
             guard let results = finishedRequest.results as? [VNClassificationObservation] else { return }
             
             guard let firstObserve = results.first else { return }
-            self.positive = Double(firstObserve.confidence * 100)
+            if (String(firstObserve.identifier) == "Positive") {
+                self.positive = Double(firstObserve.confidence * 100)
+            } else {
+                self.positive = 100 - Double(firstObserve.confidence * 100)
+            }
             print("id= ", firstObserve.identifier, "conf= ", firstObserve.confidence)
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
@@ -93,16 +95,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showId") {
-            //let navigation = UINavigationController()
-            //navigation.isNavigationBarHidden = true
             print("showId")
             let showVC = segue.destination as! ShowImagesCollectionViewController
             showVC.right = right
             showVC.left = left
             showVC.accessToken = accessToken
-            //showVC.accessToken = accessToken
-            //navigation.pushViewController(showVC, animated: true)
-            
         }
     }
     

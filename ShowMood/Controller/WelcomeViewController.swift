@@ -18,15 +18,13 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        assignbackground()
+        
         // Add a background view
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fon.jpg")!)
+        assignbackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        //или self.navigationController?.navigationBarHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -37,6 +35,7 @@ class WelcomeViewController: UIViewController {
         navigationController?.view.backgroundColor = UIColor.clear
     }
     
+    // Add a background view
     func assignbackground(){
         let background = UIImage(named: "fon")
         
@@ -49,15 +48,5 @@ class WelcomeViewController: UIViewController {
         view.addSubview(imageView)
         self.view.sendSubview(toBack: imageView)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
