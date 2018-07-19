@@ -37,7 +37,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Please, wait"
+        navigationItem.title = Settings().waitString
         
         // Add a background view
         assignbackground()
@@ -143,7 +143,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
 
         cell.photo = photoDictionary
-        navigationItem.title = ""
+        navigationItem.title = "range is \(left) .. \(right)%"
         return cell
     }
     

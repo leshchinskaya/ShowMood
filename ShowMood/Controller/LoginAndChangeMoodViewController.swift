@@ -130,7 +130,7 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         //loginIndicator.isHidden = false
-        navigationItem.title = "Please, wait"
+        navigationItem.title = Settings().waitString
         loginWebView.backgroundColor = UIColor(patternImage: Settings().background!)
         //loginIndicator.startAnimating()
         

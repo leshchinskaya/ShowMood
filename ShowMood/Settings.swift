@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import  UIKit
+import UIKit
 
 class Settings: UIViewController {
     
     public let background = UIImage(named: "fon3")
+    public let waitString = "please, wait"
     
 }

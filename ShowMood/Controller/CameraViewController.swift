@@ -24,7 +24,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         print ("CameraVC")
         assignbackground()
-
+        navigationItem.title = "camera capture"
+        
         captureSession.sessionPreset = .photo
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
