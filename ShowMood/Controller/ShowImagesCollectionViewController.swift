@@ -37,6 +37,8 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Please, wait"
+        
         // Add a background view
         assignbackground()
         
@@ -72,6 +74,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                     let responseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                     
                     self.photoDictionaries = responseDictionary["data"] as! [UIImage]
+                    
                     
                     for result in self.photoDictionaries {
                         let likes = result.value(forKeyPath: "likes.count") as! Int
@@ -140,6 +143,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
 
         cell.photo = photoDictionary
+        navigationItem.title = ""
         return cell
     }
     

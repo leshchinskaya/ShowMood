@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
@@ -14,6 +15,8 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
     var accessToken = ""
     var right = 0, left = 0
+    
+    let keychain = KeychainSwift()
     
     /*
      %-positive
