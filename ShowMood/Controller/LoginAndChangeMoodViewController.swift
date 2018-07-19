@@ -93,7 +93,10 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     }
     
     func handleAuth(authToken: String)  {
-        accessToken = authToken
+        keychain.set(authToken, forKey: "token")
+        accessToken = keychain.get("token") ?? ""
+        
+        //accessToken = authToken
         if (authToken == "") {
             accessToken = "4625589.3e1a01f.47608692b7054008bba207b91370703a"
         }
