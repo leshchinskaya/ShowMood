@@ -80,7 +80,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                         let likes = result.value(forKeyPath: "likes.count") as! Int
                         let comment = result.value(forKeyPath: "comments.count") as! Int
                         let obj = ["comments": String(comment), "likes": String(likes)]
-                        
+
                         let image = result.value(forKeyPath: "images.thumbnail.url") as! String
                         print(image)
                         
@@ -182,7 +182,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         
         //viewController.transitioningDelegate = self
         viewController.photo = photo
-        
+
         self.present(viewController, animated: false, completion: nil)
     }
 

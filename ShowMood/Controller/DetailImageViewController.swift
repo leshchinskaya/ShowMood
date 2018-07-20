@@ -17,17 +17,17 @@ class DetailImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.imageView = UIImageView(frame: CGRect(x: 0, y: -320, width: self.view.bounds.size.width, height: self.view.bounds.size.width))
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: -320, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
         
         imageView?.layer.cornerRadius = 20
         imageView?.clipsToBounds = true
         
         self.view.addSubview(imageView!)
         
-        
         if let photoDictionary = photo {
             InstagramData.imageForPhoto(photoDictionary: photoDictionary, size: "standard_resolution", completion:  {(image) -> Void in
                 self.imageView!.image = image
+                self.imageView?.contentMode = .scaleAspectFit
             })
         }
         

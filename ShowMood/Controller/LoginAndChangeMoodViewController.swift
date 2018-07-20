@@ -66,6 +66,8 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginWebView.scrollView.contentInsetAdjustmentBehavior = .automatic
+        
         assignbackground()
         
         loginWebView.delegate = self
@@ -98,7 +100,7 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
         
         //accessToken = authToken
         if (authToken == "") {
-            accessToken = "4625589.3e1a01f.47608692b7054008bba207b91370703a"
+            navigationItem.title = "Error with Auth"
         }
         print("Instagram authentication token ==", accessToken)
         
@@ -125,7 +127,8 @@ class LoginAndChageMoodViewController: UIViewController, UIWebViewDelegate {
     
     // MARK: - UIWebViewDelegate
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        return checkRequestForCallbackURL(request: request)
+        let check = checkRequestForCallbackURL(request: request)
+        return check
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

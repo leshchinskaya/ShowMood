@@ -12,12 +12,17 @@ class WelcomeViewController: UIViewController {
     
     var accessToken = ""
     var right = 0, left = 0
-
-    @IBAction func nextButton() {
+    
+    @IBAction func clearButton() {
+        let storage : HTTPCookieStorage = HTTPCookieStorage.shared
+        for cookie in storage.cookies  as! [HTTPCookie]{
+            storage.deleteCookie(cookie)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         // Add a background view
         assignbackground()
