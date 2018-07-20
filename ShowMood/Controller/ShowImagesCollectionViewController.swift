@@ -19,6 +19,8 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     var right = 0, left = 0
     var currentPositive = 0.0
     
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
     private let trainedImageSize = CGSize(width: 227, height: 227)
     
     private var photoDictionaries = [AnyObject]()
@@ -38,9 +40,10 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         super.viewDidLoad()
         
         navigationItem.title = Settings().waitString
+        loadbackground()
         
         // Add a background view
-        assignbackground()
+        //assignbackground()
         
         print (left, "..", right, " / accessToken = ", accessToken)
         // Uncomment the following line to preserve selection between presentations
@@ -57,6 +60,38 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         
         fetchPhotos()
     }
+
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        let fadeView:UIView = UIView()
+        fadeView.frame = self.view.frame
+        fadeView.backgroundColor = UIColor.white
+        fadeView.alpha = 0.4
+        
+        self.view.addSubview(fadeView)
+        
+        self.view.addSubview(activityView)
+        activityView.hidesWhenStopped = true
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            self.fetchPhotos()
+        }
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                self.collectionView?.reloadData()
+                self.collectionView?.alpha = 1
+                fadeView.removeFromSuperview()
+                self.activityView.stopAnimating()
+            }, completion: nil)
+        }
+    }
+    */
     
     // MARK: - Helper Methods
     func fetchPhotos() {
@@ -118,6 +153,16 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         imageView.center = view.center
         self.collectionView?.backgroundView = imageView
     }
+    
+    func loadbackground(){
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = Settings().loadBack
+        imageView.center = view.center
+        self.collectionView?.backgroundView = imageView
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -143,7 +188,9 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
 
         cell.photo = photoDictionary
-        navigationItem.title = "range is \(left) .. \(right)%"
+        navigationItem.title = "positive range is \(left) .. \(right)%"
+        assignbackground()
+        
         return cell
     }
     
