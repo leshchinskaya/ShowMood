@@ -68,7 +68,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.captureSession.stopRunning()
         print("\n\n", self.positive)
         self.diap()
-        self.performSegue(withIdentifier: "showId", sender: nil)
+        //self.performSegue(withIdentifier: "showId", sender: nil)
     }
     
     func diap() {

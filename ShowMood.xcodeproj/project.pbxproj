@@ -20,6 +20,16 @@
 		CD52B51720FE853B0015EFE8 /* DismissDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B51620FE853B0015EFE8 /* DismissDetailTransition.swift */; };
 		CD52B51920FE87800015EFE8 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */; };
 		CDBB2B2820FFE5CD007FADAC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B2720FFE5CD007FADAC /* Settings.swift */; };
+		CDBB2B5B21039FEE007FADAC /* Welcome2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B5921039FEE007FADAC /* Welcome2ViewController.swift */; };
+		CDBB2B5C21039FEE007FADAC /* Welcome2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBB2B5A21039FEE007FADAC /* Welcome2ViewController.xib */; };
+		CDBB2B5F2103A20F007FADAC /* LoginAndChangeMood2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B5D2103A20F007FADAC /* LoginAndChangeMood2ViewController.swift */; };
+		CDBB2B602103A20F007FADAC /* LoginAndChangeMood2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBB2B5E2103A20F007FADAC /* LoginAndChangeMood2ViewController.xib */; };
+		CDBB2B672103A6E7007FADAC /* Camera2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B652103A6E7007FADAC /* Camera2ViewController.swift */; };
+		CDBB2B682103A6E7007FADAC /* Camera2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBB2B662103A6E7007FADAC /* Camera2ViewController.xib */; };
+		CDBB2B6B2103AA4C007FADAC /* ImagesCollection2ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B692103AA4C007FADAC /* ImagesCollection2ViewCell.swift */; };
+		CDBB2B6C2103AA4C007FADAC /* ImagesCollection2ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBB2B6A2103AA4C007FADAC /* ImagesCollection2ViewCell.xib */; };
+		CDBB2B732103B5CB007FADAC /* ShowImages3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBB2B712103B5CB007FADAC /* ShowImages3ViewController.swift */; };
+		CDBB2B742103B5CB007FADAC /* ShowImages3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBB2B722103B5CB007FADAC /* ShowImages3ViewController.xib */; };
 		CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */; };
 		CDDE8FB220FD04DA00462078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB020FD04DA00462078 /* Main.storyboard */; };
 		CDDE8FB420FD04DD00462078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDE8FB320FD04DD00462078 /* Assets.xcassets */; };
@@ -42,6 +52,16 @@
 		CD52B51620FE853B0015EFE8 /* DismissDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissDetailTransition.swift; sourceTree = "<group>"; };
 		CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		CDBB2B2720FFE5CD007FADAC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		CDBB2B5921039FEE007FADAC /* Welcome2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome2ViewController.swift; sourceTree = "<group>"; };
+		CDBB2B5A21039FEE007FADAC /* Welcome2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Welcome2ViewController.xib; sourceTree = "<group>"; };
+		CDBB2B5D2103A20F007FADAC /* LoginAndChangeMood2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndChangeMood2ViewController.swift; sourceTree = "<group>"; };
+		CDBB2B5E2103A20F007FADAC /* LoginAndChangeMood2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginAndChangeMood2ViewController.xib; sourceTree = "<group>"; };
+		CDBB2B652103A6E7007FADAC /* Camera2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera2ViewController.swift; sourceTree = "<group>"; };
+		CDBB2B662103A6E7007FADAC /* Camera2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Camera2ViewController.xib; sourceTree = "<group>"; };
+		CDBB2B692103AA4C007FADAC /* ImagesCollection2ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollection2ViewCell.swift; sourceTree = "<group>"; };
+		CDBB2B6A2103AA4C007FADAC /* ImagesCollection2ViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollection2ViewCell.xib; sourceTree = "<group>"; };
+		CDBB2B712103B5CB007FADAC /* ShowImages3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImages3ViewController.swift; sourceTree = "<group>"; };
+		CDBB2B722103B5CB007FADAC /* ShowImages3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowImages3ViewController.xib; sourceTree = "<group>"; };
 		CDDE8FA920FD04DA00462078 /* ShowMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDDE8FB120FD04DA00462078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,19 +99,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CD0CDA3B20FD081D009356B9 /* Controller */ = {
+		CD0CDA3B20FD081D009356B9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */,
+				CDBB2B5821039ACE007FADAC /* LoginAndChangeMoodVC */,
+				CDBB2B52210399FD007FADAC /* CameraVC */,
+				CDBB2B4F210399A1007FADAC /* ShowImagesCollectionVC */,
+				CDBB2B4C21039936007FADAC /* WelcomeVC */,
 				CD0CDA4B20FD115D009356B9 /* Instagram Auth */,
-				CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */,
-				CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */,
-				CD0CDA6320FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift */,
-				CD52B50820FE4A780015EFE8 /* CameraViewController.swift */,
 				CD52B51420FE85240015EFE8 /* PresentDetailTransition.swift */,
 				CD52B51620FE853B0015EFE8 /* DismissDetailTransition.swift */,
-				CD52B51820FE87800015EFE8 /* DetailImageViewController.swift */,
 			);
-			path = Controller;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		CD0CDA4B20FD115D009356B9 /* Instagram Auth */ = {
@@ -111,12 +131,54 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CD52B50D20FE7CC90015EFE8 /* View */ = {
+		CD52B50D20FE7CC90015EFE8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				CD52B50E20FE7CE60015EFE8 /* ImagesCollectionViewCell.swift */,
+				CDBB2B692103AA4C007FADAC /* ImagesCollection2ViewCell.swift */,
+				CDBB2B6A2103AA4C007FADAC /* ImagesCollection2ViewCell.xib */,
 			);
-			path = View;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CDBB2B4C21039936007FADAC /* WelcomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CD0CDA3E20FD096B009356B9 /* WelcomeViewController.swift */,
+				CDBB2B5921039FEE007FADAC /* Welcome2ViewController.swift */,
+				CDBB2B5A21039FEE007FADAC /* Welcome2ViewController.xib */,
+			);
+			path = WelcomeVC;
+			sourceTree = "<group>";
+		};
+		CDBB2B4F210399A1007FADAC /* ShowImagesCollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				CD0CDA4620FD0A95009356B9 /* ShowImagesCollectionViewController.swift */,
+				CDBB2B712103B5CB007FADAC /* ShowImages3ViewController.swift */,
+				CDBB2B722103B5CB007FADAC /* ShowImages3ViewController.xib */,
+			);
+			path = ShowImagesCollectionVC;
+			sourceTree = "<group>";
+		};
+		CDBB2B52210399FD007FADAC /* CameraVC */ = {
+			isa = PBXGroup;
+			children = (
+				CD52B50820FE4A780015EFE8 /* CameraViewController.swift */,
+				CDBB2B652103A6E7007FADAC /* Camera2ViewController.swift */,
+				CDBB2B662103A6E7007FADAC /* Camera2ViewController.xib */,
+			);
+			path = CameraVC;
+			sourceTree = "<group>";
+		};
+		CDBB2B5821039ACE007FADAC /* LoginAndChangeMoodVC */ = {
+			isa = PBXGroup;
+			children = (
+				CD0CDA6320FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift */,
+				CDBB2B5D2103A20F007FADAC /* LoginAndChangeMood2ViewController.swift */,
+				CDBB2B5E2103A20F007FADAC /* LoginAndChangeMood2ViewController.xib */,
+			);
+			path = LoginAndChangeMoodVC;
 			sourceTree = "<group>";
 		};
 		CDDE8FA020FD04DA00462078 = {
@@ -140,11 +202,11 @@
 		CDDE8FAB20FD04DA00462078 /* ShowMood */ = {
 			isa = PBXGroup;
 			children = (
-				CDBB2B2720FFE5CD007FADAC /* Settings.swift */,
-				CD52B50D20FE7CC90015EFE8 /* View */,
-				CD52B50A20FE4B730015EFE8 /* Model */,
-				CD0CDA3B20FD081D009356B9 /* Controller */,
 				CDDE8FAC20FD04DA00462078 /* AppDelegate.swift */,
+				CDBB2B2720FFE5CD007FADAC /* Settings.swift */,
+				CD52B50D20FE7CC90015EFE8 /* Cells */,
+				CD52B50A20FE4B730015EFE8 /* Model */,
+				CD0CDA3B20FD081D009356B9 /* Screens */,
 				CDDE8FB020FD04DA00462078 /* Main.storyboard */,
 				CDDE8FB320FD04DD00462078 /* Assets.xcassets */,
 				CDDE8FB520FD04DD00462078 /* LaunchScreen.storyboard */,
@@ -214,7 +276,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDDE8FB720FD04DD00462078 /* LaunchScreen.storyboard in Resources */,
+				CDBB2B682103A6E7007FADAC /* Camera2ViewController.xib in Resources */,
+				CDBB2B742103B5CB007FADAC /* ShowImages3ViewController.xib in Resources */,
 				CDDE8FB420FD04DD00462078 /* Assets.xcassets in Resources */,
+				CDBB2B5C21039FEE007FADAC /* Welcome2ViewController.xib in Resources */,
+				CDBB2B6C2103AA4C007FADAC /* ImagesCollection2ViewCell.xib in Resources */,
+				CDBB2B602103A20F007FADAC /* LoginAndChangeMood2ViewController.xib in Resources */,
 				CDDE8FB220FD04DA00462078 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDBB2B672103A6E7007FADAC /* Camera2ViewController.swift in Sources */,
 				CDDE8FAD20FD04DA00462078 /* AppDelegate.swift in Sources */,
 				CD52B51120FE7D4E0015EFE8 /* InstagramData.swift in Sources */,
 				CDBB2B2820FFE5CD007FADAC /* Settings.swift in Sources */,
@@ -279,10 +347,14 @@
 				CD52B51520FE85240015EFE8 /* PresentDetailTransition.swift in Sources */,
 				CD52B51720FE853B0015EFE8 /* DismissDetailTransition.swift in Sources */,
 				CD0CDA6420FDC5AE009356B9 /* LoginAndChangeMoodViewController.swift in Sources */,
+				CDBB2B6B2103AA4C007FADAC /* ImagesCollection2ViewCell.swift in Sources */,
+				CDBB2B732103B5CB007FADAC /* ShowImages3ViewController.swift in Sources */,
 				CD52B51920FE87800015EFE8 /* DetailImageViewController.swift in Sources */,
 				CD0CDA3F20FD096B009356B9 /* WelcomeViewController.swift in Sources */,
 				CD0CDA4720FD0A95009356B9 /* ShowImagesCollectionViewController.swift in Sources */,
+				CDBB2B5F2103A20F007FADAC /* LoginAndChangeMood2ViewController.swift in Sources */,
 				CD52B50F20FE7CE60015EFE8 /* ImagesCollectionViewCell.swift in Sources */,
+				CDBB2B5B21039FEE007FADAC /* Welcome2ViewController.swift in Sources */,
 				CD52B50920FE4A780015EFE8 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

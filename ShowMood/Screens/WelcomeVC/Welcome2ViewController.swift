@@ -1,14 +1,14 @@
 //
-//  WelcomeViewController.swift
+//  Welcome2ViewController.swift
 //  ShowMood
 //
-//  Created by Marie on 16.07.2018.
+//  Created by Marie on 21.07.2018.
 //  Copyright © 2018 Mariya. All rights reserved.
 //
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class Welcome2ViewController: UIViewController {
     
     var accessToken = ""
     var right = 0, left = 0
@@ -18,14 +18,33 @@ class WelcomeViewController: UIViewController {
         for cookie in storage.cookies  as! [HTTPCookie]{
             storage.deleteCookie(cookie)
         }
+        print ("clearButton")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         // Add a background view
         assignbackground()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                do {
+                let loginAndChangeMoodVC = LoginAndChangeMood2ViewController(nibName: "LoginAndChangeMood2ViewController", bundle: nil)
+                self.navigationController?.pushViewController(loginAndChangeMoodVC, animated: true)
+                print("Swiped left")
+            }
+            default:
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,5 +70,4 @@ class WelcomeViewController: UIViewController {
         view.addSubview(imageView)
         self.view.sendSubview(toBack: imageView)
     }
-
 }

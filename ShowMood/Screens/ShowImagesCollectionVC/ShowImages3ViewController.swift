@@ -1,19 +1,19 @@
 //
-//  ShowImagesCollectionViewController.swift
+//  ShowImages3ViewController.swift
 //  ShowMood
 //
-//  Created by Marie on 16.07.2018.
+//  Created by Marie on 21.07.2018.
 //  Copyright © 2018 Mariya. All rights reserved.
 //
 
 import UIKit
-import AVKit
-import Vision
-import CoreML
 
-private let reuseIdentifier = "Cell"
+class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-class ShowImagesCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private var imagesCell: ImagesCollection2ViewCell?
+    let customCellIdentifier = "customCell"
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var accessToken = ""
     var right = 0, left = 0
@@ -31,72 +31,34 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
     private let leftAndRightPaddings: CGFloat = 32.0
     private let numberOfItemsPerRow: CGFloat = 3.0
     private let heightAdjustment: CGFloat = 30.0
-    
-    struct Storyboard {
-        static let imagesPhotoCell = "ImagesPhotoCell"
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "ImagesCollection2ViewCell", bundle: nil), forCellWithReuseIdentifier: customCellIdentifier)
         
         navigationItem.title = Settings().waitString
         loadbackground()
         
-        // Add a background view
-        //assignbackground()
-        
         print (left, "..", right, " / accessToken = ", accessToken)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Configure the collection view
         let width = (collectionView!.frame.size.width - leftAndRightPaddings) / numberOfItemsPerRow
         
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width + heightAdjustment)
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
         
         fetchPhotos()
     }
-
-    /*
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
-        let fadeView:UIView = UIView()
-        fadeView.frame = self.view.frame
-        fadeView.backgroundColor = UIColor.white
-        fadeView.alpha = 0.4
-        
-        self.view.addSubview(fadeView)
-        
-        self.view.addSubview(activityView)
-        activityView.hidesWhenStopped = true
-        activityView.center = self.view.center
-        activityView.startAnimating()
-        
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            self.fetchPhotos()
-        }
-        
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-                self.collectionView?.reloadData()
-                self.collectionView?.alpha = 1
-                fadeView.removeFromSuperview()
-                self.activityView.stopAnimating()
-            }, completion: nil)
-        }
-    }
-    */
     
     // MARK: - Helper Methods
     func fetchPhotos() {
         let session = URLSession.shared
-
+        
         let urlSring = "https://api.instagram.com/v1/users/self/media/recent/?access_token=\(accessToken)"
         guard let url = URL(string: urlSring) else { return }
         
@@ -115,7 +77,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                         let likes = result.value(forKeyPath: "likes.count") as! Int
                         let comment = result.value(forKeyPath: "comments.count") as! Int
                         let obj = ["comments": String(comment), "likes": String(likes)]
-
+                        
                         let image = result.value(forKeyPath: "images.thumbnail.url") as! String
                         print(image)
                         
@@ -128,7 +90,7 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
                         if (Int(self.currentPositive) >= self.left && Int(self.currentPositive) <= self.right) {
                             self.photoDictionariesFiltered.append(result)
                         }
-                    
+                        
                         self.data.append(obj)
                     }
                     
@@ -163,30 +125,33 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         imageView.center = view.center
         self.collectionView?.backgroundView = imageView
     }
+}
+extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         //return self.photoDictionaries.count
         return self.photoDictionariesFiltered.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.imagesPhotoCell, for: indexPath) as! ImagesCollectionViewCell
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIdentifier, for: indexPath) as? ImagesCollection2ViewCell else { fatalError("Fatal error") }
         
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
-
+        
         //let photoDictionary = photoDictionaries[indexPath.item]
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
-
+        
         cell.photo = photoDictionary
         navigationItem.title = "positive range is \(left) .. \(right)%"
         assignbackground()
@@ -217,11 +182,11 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         UIGraphicsEndImageContext()
         return newImage
     }
-
+    
     // MARK: UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let photo = self.photoDictionaries[indexPath.row] as! NSDictionary
-
+        
         let photo = self.photoDictionariesFiltered[indexPath.row] as! NSDictionary
         
         let viewController = DetailImageViewController()
@@ -229,25 +194,14 @@ class ShowImagesCollectionViewController: UICollectionViewController, UIImagePic
         
         //viewController.transitioningDelegate = self
         viewController.photo = photo
-
+        
         self.present(viewController, animated: false, completion: nil)
     }
-
+    
 }
-
-// MARK: - UISearchBarDelegate
-extension ShowImagesCollectionViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if !searchBar.text!.isEmpty {
-            searchBar.resignFirstResponder()
-            fetchPhotos()
-        }
-    }
-}
-
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension ShowImagesCollectionViewController: UIViewControllerTransitioningDelegate {
+extension ShowImages3ViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentDetailTransition()
     }
@@ -284,4 +238,3 @@ extension UIImage {
         return pixelBuffer
     }
 }
-
