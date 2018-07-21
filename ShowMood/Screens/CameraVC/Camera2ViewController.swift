@@ -12,7 +12,8 @@ import Vision
 
 class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    let labelPositive = UILabel()
+    @IBOutlet weak var positiveLabel: UILabel!
+    //let labelPositive = UILabel()
     var positive = 0.0
     var left = 0, right = 0
     var accessToken = ""
@@ -59,8 +60,31 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
                 self.positive = 100 - Double(firstObserve.confidence * 100)
             }
             print("id= ", firstObserve.identifier, "conf= ", firstObserve.confidence)
+            
+            DispatchQueue.main.async {
+                
+                self.positiveLabel.text = "positive is \(Int(self.positive))% \(self.positiveIs(posit: Int(self.positive)))"
+            }
+            //self.positiveLabel.text = String(firstObserve.confidence*100)
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+    }
+    
+    func positiveIs(posit: Int) -> String {
+        switch (posit) {
+        case 0...20:
+            return "😖"
+        case 21...40:
+            return "😔"
+        case 41...60:
+            return "😐"
+        case 61...80:
+            return "🙂"
+        case 81...100:
+            return "☺️"
+        default:
+            return ""
+        }
     }
     
     func perfomValues() {
