@@ -37,6 +37,7 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.prefetchDataSource = self
         collectionView.register(UINib(nibName: "ImagesCollection2ViewCell", bundle: nil), forCellWithReuseIdentifier: customCellIdentifier)
         
         navigationItem.title = Settings().waitString
@@ -74,9 +75,9 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
                     
                     
                     for result in self.photoDictionaries {
-                        let likes = result.value(forKeyPath: "likes.count") as! Int
-                        let comment = result.value(forKeyPath: "comments.count") as! Int
-                        let obj = ["comments": String(comment), "likes": String(likes)]
+                        //let likes = result.value(forKeyPath: "likes.count") as! Int
+                        //let comment = result.value(forKeyPath: "comments.count") as! Int
+                        //let obj = ["comments": String(comment), "likes": String(likes)]
                         
                         let image = result.value(forKeyPath: "images.thumbnail.url") as! String
                         print(image)
@@ -88,11 +89,18 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
                         self.predict(image: currentImage!)
                         
                         if (Int(self.currentPositive) >= self.left && Int(self.currentPositive) <= self.right) {
-                            self.photoDictionariesFiltered.append(result)
+                            DispatchQueue.main.async {
+                                self.photoDictionariesFiltered.append(result)
+                            }
                         }
                         
-                        self.data.append(obj)
+                        
+                        DispatchQueue.main.async {
+                            self.navigationItem.title = "loading"
+                            self.collectionView?.reloadData()
+                        }
                     }
+
                     
                 } catch let error {
                     print (error)
@@ -100,6 +108,8 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
             }
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
+                if (self.left < 0) { self.left = 0 }
+                self.navigationItem.title = "positive is \(self.left) .. \(self.right)%"
             }
         }
         task.resume()
@@ -170,7 +180,8 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
         
         cell.photo = photoDictionary
-        navigationItem.title = "positive is \(left-1) .. \(right)%"
+        //if (left < 0) { left = 0 }
+        //navigationItem.title = "positive is \(left) .. \(right)%"
         assignbackground()
         
         return cell
@@ -215,6 +226,12 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
         self.present(viewController, animated: false, completion: nil)
     }
     
+}
+
+extension ShowImages3ViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("Prefetch \(indexPaths)")
+    }
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
