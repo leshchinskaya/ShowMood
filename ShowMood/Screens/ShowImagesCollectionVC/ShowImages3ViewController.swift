@@ -105,6 +105,23 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
         task.resume()
     }
     
+    func positiveIs(posit: Int) -> String {
+        switch (posit) {
+        case 0...20:
+            return "😖"
+        case 21...40:
+            return "😔"
+        case 41...60:
+            return "😐"
+        case 61...80:
+            return "🙂"
+        case 81...100:
+            return "☺️"
+        default:
+            return ""
+        }
+    }
+    
     // Add a background view
     func assignbackground(){
         var imageView : UIImageView!
@@ -153,7 +170,7 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
         
         cell.photo = photoDictionary
-        navigationItem.title = "positive range is \(left) .. \(right)%"
+        navigationItem.title = "positive is \(left-1) .. \(right)%"
         assignbackground()
         
         return cell

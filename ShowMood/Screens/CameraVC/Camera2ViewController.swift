@@ -62,10 +62,8 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
             print("id= ", firstObserve.identifier, "conf= ", firstObserve.confidence)
             
             DispatchQueue.main.async {
-                
                 self.positiveLabel.text = "positive is \(Int(self.positive))% \(self.positiveIs(posit: Int(self.positive)))"
             }
-            //self.positiveLabel.text = String(firstObserve.confidence*100)
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
