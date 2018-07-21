@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import SystemConfiguration
 
 class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     
@@ -15,6 +16,7 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     
     var accessToken = ""
     var right = 0, left = 0
+    var internetSuccess = false
     
     let keychain = KeychainSwift()
     
@@ -78,6 +80,28 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            let url = URL(string: "https://www.google.com")!
+            let request = URLRequest(url: url)
+            
+            let task = URLSession.shared.dataTask(with: request) {data, response, error in
+                
+                if error != nil {
+                    self.navigationItem.title = "internet - failed"
+                    print("internet not available!")
+                }
+                else if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print("internet ok")
+                        self.internetSuccess = true
+                    }
+                    print("statusCode: \(httpResponse.statusCode)")
+                }
+                
+            }
+            task.resume()
+        }
         
         loginWebView.scrollView.contentInsetAdjustmentBehavior = .automatic
         
@@ -154,7 +178,7 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         //loginIndicator.isHidden = true
-        navigationItem.title = ""
+        if (internetSuccess) { navigationItem.title = "" }
         //loginIndicator.stopAnimating()
     }
     

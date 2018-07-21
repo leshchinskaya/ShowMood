@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -132,7 +133,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☺️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-Yf-yve">
-                    <rect key="frame" x="293" y="275" width="45" height="48"/>
+                    <rect key="frame" x="292" y="275" width="45" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Frh-jS-j9A"/>
+                        <constraint firstAttribute="width" secondItem="XMx-Yf-yve" secondAttribute="height" multiplier="15:16" id="eEH-xN-aeZ"/>
+                        <constraint firstAttribute="width" constant="45" id="oVX-9V-fwS"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -148,7 +154,7 @@
                 <constraint firstItem="rtZ-Pe-Sxu" firstAttribute="centerX" secondItem="xHo-v8-YAn" secondAttribute="centerX" id="Brk-mf-kRv"/>
                 <constraint firstItem="rtZ-Pe-Sxu" firstAttribute="trailing" secondItem="gX9-VG-pZE" secondAttribute="trailing" id="MBO-cX-F0q"/>
                 <constraint firstItem="sXZ-UH-oEA" firstAttribute="centerX" secondItem="HTo-Kc-F33" secondAttribute="centerX" id="MIs-Il-yDl"/>
-                <constraint firstItem="XMx-Yf-yve" firstAttribute="trailing" secondItem="rtZ-Pe-Sxu" secondAttribute="trailing" constant="10" id="PLq-Bb-ddF"/>
+                <constraint firstItem="XMx-Yf-yve" firstAttribute="trailing" secondItem="rtZ-Pe-Sxu" secondAttribute="trailing" constant="9" id="PLq-Bb-ddF"/>
                 <constraint firstItem="fqy-5g-fjp" firstAttribute="leading" secondItem="HTo-Kc-F33" secondAttribute="trailing" id="PlS-WC-eeC"/>
                 <constraint firstItem="rtZ-Pe-Sxu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="46" id="Qhb-AN-9hW"/>
                 <constraint firstItem="HTo-Kc-F33" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="137" id="SLO-tx-jiU"/>

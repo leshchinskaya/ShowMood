@@ -14,5 +14,5 @@ class Settings: UIViewController {
     public let background = UIImage(named: "fon3")
     public let loadBack = UIImage(named: "load")
     public let waitString = "please, wait"
-    
+
 }
