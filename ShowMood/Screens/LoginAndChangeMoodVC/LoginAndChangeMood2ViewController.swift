@@ -134,15 +134,11 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     func handleAuth(authToken: String)  {
         keychain.set(authToken, forKey: "token")
         accessToken = keychain.get("token") ?? ""
-        
-        //accessToken = authToken
+
         if (authToken == "") {
             navigationItem.title = "Error with Auth"
         }
         print("Instagram authentication token ==", accessToken)
-        
-        let welcomeVC = WelcomeViewController()
-        welcomeVC.accessToken = accessToken
         
         loginWebView.isHidden = true
         

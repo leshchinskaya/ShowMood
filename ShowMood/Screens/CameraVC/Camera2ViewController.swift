@@ -13,7 +13,6 @@ import Vision
 class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var positiveLabel: UILabel!
-    //let labelPositive = UILabel()
     var positive = 0.0
     var left = 0, right = 0
     var accessToken = ""
@@ -23,6 +22,11 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
     override func viewDidLoad() {
         super.viewDidLoad()
         print ("CameraVC")
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         assignbackground()
         navigationItem.title = "camera capture"
         
@@ -41,6 +45,20 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                do {
+                    //capturedevise = AVCaptureDevice.Position.front as AVCaptureDevice
+                    print("Swiped left")
+                }
+            default:
+                break
+            }
+        }
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
