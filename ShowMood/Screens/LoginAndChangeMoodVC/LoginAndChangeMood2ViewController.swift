@@ -137,6 +137,7 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
 
         if (authToken == "") {
             navigationItem.title = "Error with Auth"
+            accessToken = INSTAGRAM_IDS.INSTAGRAM_ACCESS_TOKEN
         }
         print("Instagram authentication token ==", accessToken)
         

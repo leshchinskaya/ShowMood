@@ -18,6 +18,7 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
     var accessToken = ""
     var right = 0, left = 0
     var currentPositive = 0.0
+    var positiveMas = [Double]()
     
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
@@ -91,6 +92,7 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
                         if (Int(self.currentPositive) >= self.left && Int(self.currentPositive) <= self.right) {
                             DispatchQueue.main.async {
                                 self.photoDictionariesFiltered.append(result)
+                                self.positiveMas.append(self.currentPositive)
                             }
                         }
                         
@@ -178,8 +180,10 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
         
         //let photoDictionary = photoDictionaries[indexPath.item]
         let photoDictionary = photoDictionariesFiltered[indexPath.item]
+        let positive = Int(positiveMas[indexPath.item])
         
         cell.photo = photoDictionary
+        cell.label = "\(positive)%"
         //if (left < 0) { left = 0 }
         //navigationItem.title = "positive is \(left) .. \(right)%"
         assignbackground()

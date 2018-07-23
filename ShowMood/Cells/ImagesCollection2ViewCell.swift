@@ -12,11 +12,19 @@ class ImagesCollection2ViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var positiveValueLabel: UILabel!
+    
     var photo: AnyObject! {
         didSet {
             InstagramData.imageForPhoto(photoDictionary: photo, size: "thumbnail") { (image) -> Void in
                 self.imageView.image = image
             }
+        }
+    }
+    
+    var label: String! {
+        didSet {
+            self.positiveValueLabel.text = label
         }
     }
 }
