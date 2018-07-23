@@ -141,6 +141,7 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
         }
         print("Instagram authentication token ==", accessToken)
         
+        loginWebView.stopLoading()
         loginWebView.isHidden = true
         
     }
