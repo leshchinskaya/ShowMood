@@ -72,7 +72,7 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
                 do {
                     let responseDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                     
-                    self.photoDictionaries = responseDictionary["data"] as! [UIImage]
+                    self.photoDictionaries = responseDictionary["data"] as! [AnyObject]
                     
                     
                     for result in self.photoDictionaries {
@@ -111,6 +111,7 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
                 if (self.left < 0) { self.left = 0 }
+                if (self.right > 100) { self.right = 100}
                 self.navigationItem.title = "positive is \(self.left) .. \(self.right)%"
             }
         }

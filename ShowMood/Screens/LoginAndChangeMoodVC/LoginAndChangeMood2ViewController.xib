@@ -62,7 +62,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple Emotions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtZ-Pe-Sxu">
-                    <rect key="frame" x="46" y="116" width="282" height="57"/>
+                    <rect key="frame" x="46" y="116" width="283" height="57"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="57" id="dzZ-Gc-8Vj"/>
                     </constraints>
@@ -71,7 +71,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Emotions     " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-VG-pZE">
-                    <rect key="frame" x="46" y="451" width="282" height="57"/>
+                    <rect key="frame" x="46" y="451" width="283" height="57"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="57" id="hSu-fw-cMp"/>
                     </constraints>
@@ -80,7 +80,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" alpha="0.15000000596046448" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQe-xZ-6es">
-                    <rect key="frame" x="40" y="507" width="295" height="39"/>
+                    <rect key="frame" x="40" y="507" width="296" height="39"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="23"/>
                     <state key="normal" title="open camera">
@@ -102,7 +102,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="just tap on the circle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHo-v8-YAn">
-                    <rect key="frame" x="40" y="172" width="295" height="44"/>
+                    <rect key="frame" x="40" y="172" width="296" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -133,7 +133,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☺️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-Yf-yve">
-                    <rect key="frame" x="292" y="275" width="45" height="48"/>
+                    <rect key="frame" x="293" y="275" width="45" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Frh-jS-j9A"/>
                         <constraint firstAttribute="width" secondItem="XMx-Yf-yve" secondAttribute="height" multiplier="15:16" id="eEH-xN-aeZ"/>

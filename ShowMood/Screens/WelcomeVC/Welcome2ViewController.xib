@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,24 +17,15 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSf-o9-5V4">
-                    <rect key="frame" x="359" y="299" width="0.0" height="97"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="97" id="eeM-9M-zxt"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" alpha="0.15000000596046448" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDf-2Z-nFg">
-                    <rect key="frame" x="164" y="601" width="195" height="46"/>
+                    <rect key="frame" x="157" y="502" width="163" height="46"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="Akh-ee-78k"/>
+                        <constraint firstAttribute="width" secondItem="CDf-2Z-nFg" secondAttribute="height" multiplier="163:46" id="mxk-9m-ZtP"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="23"/>
                     <state key="normal" title=" exit of account">
@@ -44,7 +36,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Mood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMq-82-8H1">
-                    <rect key="frame" x="0.0" y="298" width="375" height="71"/>
+                    <rect key="frame" x="0.0" y="249" width="320" height="71"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="71" id="nTM-wq-2Oe"/>
                     </constraints>
@@ -53,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wb-Gc-wDP">
-                    <rect key="frame" x="352" y="285" width="7" height="97"/>
+                    <rect key="frame" x="300" y="238" width="13" height="97"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,20 +56,17 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="eMq-82-8H1" secondAttribute="trailing" id="1Pr-2E-kJI"/>
-                <constraint firstItem="9wb-Gc-wDP" firstAttribute="centerY" secondItem="eMq-82-8H1" secondAttribute="centerY" id="5KA-PG-h6W"/>
+                <constraint firstItem="9wb-Gc-wDP" firstAttribute="centerY" secondItem="eMq-82-8H1" secondAttribute="centerY" constant="2" id="5KA-PG-h6W"/>
                 <constraint firstItem="eMq-82-8H1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J61-tI-fJk"/>
-                <constraint firstItem="9wb-Gc-wDP" firstAttribute="leading" secondItem="eMq-82-8H1" secondAttribute="trailing" constant="-23" id="LPM-E3-7pk"/>
-                <constraint firstItem="FSf-o9-5V4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="299" id="QCy-up-U3l"/>
-                <constraint firstItem="eMq-82-8H1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="278" id="azh-oF-BhM"/>
-                <constraint firstItem="9wb-Gc-wDP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="265" id="dFN-MW-7dZ"/>
-                <constraint firstItem="FSf-o9-5V4" firstAttribute="leading" secondItem="eMq-82-8H1" secondAttribute="trailing" constant="-16" id="eEI-83-vYW"/>
+                <constraint firstItem="9wb-Gc-wDP" firstAttribute="leading" secondItem="eMq-82-8H1" secondAttribute="trailing" constant="-20" id="LPM-E3-7pk"/>
+                <constraint firstItem="eMq-82-8H1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="229" id="azh-oF-BhM"/>
+                <constraint firstItem="9wb-Gc-wDP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="218" id="dFN-MW-7dZ"/>
                 <constraint firstAttribute="bottom" secondItem="CDf-2Z-nFg" secondAttribute="bottom" constant="20" symbolic="YES" id="fxr-L9-ycS"/>
-                <constraint firstItem="CDf-2Z-nFg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="164" id="gG0-e4-uKn"/>
-                <constraint firstItem="9wb-Gc-wDP" firstAttribute="trailing" secondItem="FSf-o9-5V4" secondAttribute="trailing" id="gRK-aj-z0E"/>
-                <constraint firstItem="CDf-2Z-nFg" firstAttribute="trailing" secondItem="FSf-o9-5V4" secondAttribute="trailing" id="niB-YV-Vee"/>
+                <constraint firstItem="CDf-2Z-nFg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="157" id="gG0-e4-uKn"/>
+                <constraint firstItem="9wb-Gc-wDP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="13:568" id="zoq-7G-ybP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="13.5" y="59.5"/>
+            <point key="canvasLocation" x="13" y="59"/>
         </view>
     </objects>
 </document>
