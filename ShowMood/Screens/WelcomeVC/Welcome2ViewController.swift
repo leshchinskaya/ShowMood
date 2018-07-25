@@ -19,6 +19,8 @@ class Welcome2ViewController: UIViewController {
             storage.deleteCookie(cookie)
         }
         print ("clearButton")
+        let loginAndChangeMoodVC = LoginAndChangeMood2ViewController(nibName: "LoginAndChangeMood2ViewController", bundle: nil)
+        self.navigationController?.pushViewController(loginAndChangeMoodVC, animated: true)
     }
     
     override func viewDidLoad() {
