@@ -10,9 +10,13 @@ import UIKit
 
 class DetailImageViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var photo: NSDictionary?
     var imageView: UIImageView?
     var animator: UIDynamicAnimator?
+    
+    // MARK: - BaseClass
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,8 @@ class DetailImageViewController: UIViewController {
         //let snap = UIGravityBehavior(items: [self.imageView!])
         self.animator?.addBehavior(snap)
     }
+    
+    // MARK: - Internal methods
     
     @objc func close() {
         self.animator?.removeAllBehaviors()

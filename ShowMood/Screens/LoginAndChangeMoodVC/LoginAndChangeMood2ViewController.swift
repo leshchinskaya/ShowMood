@@ -12,30 +12,18 @@ import SystemConfiguration
 
 class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     
+    // MARK: - Constants
+    
     let loginWebView: UIWebView = UIWebView (frame: CGRect (x:0, y:0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    let keychain = KeychainSwift()
+    
+    // MARK: - Properties
     
     var accessToken = ""
     var right = 0, left = 0
     var internetSuccess = false
     
-    let keychain = KeychainSwift()
-    
-    /*
-     %-positive
-     0-20 - very sad
-     21-40 - sad
-     41-60 - neitral
-     61-80 - happy
-     81-100 - very happy
-     */
-    
-    func perfomValues() {
-        let showImages3VC = ShowImages3ViewController(nibName: "ShowImages3ViewController", bundle: nil)
-        showImages3VC.left = left
-        showImages3VC.right = right
-        showImages3VC.accessToken = accessToken
-        self.navigationController?.pushViewController(showImages3VC, animated: true)
-    }
+    // MARK: - IBActions
     
     @IBAction func verySadButton() {
         left = 0
@@ -78,6 +66,8 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
         self.navigationController?.pushViewController(camera2VC, animated: true)
     }
     
+    // MARK: - BaseClass
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,7 +102,25 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
         unSignedRequest()
     }
     
-    //MARK: - unSignedRequest
+    // MARK: - Internal methods
+    
+    /*
+     %-positive
+     0-20 - very sad
+     21-40 - sad
+     41-60 - neitral
+     61-80 - happy
+     81-100 - very happy
+     */
+    
+    func perfomValues() {
+        let showImages3VC = ShowImages3ViewController(nibName: "ShowImages3ViewController", bundle: nil)
+        showImages3VC.left = left
+        showImages3VC.right = right
+        showImages3VC.accessToken = accessToken
+        self.navigationController?.pushViewController(showImages3VC, animated: true)
+    }
+    
     func unSignedRequest () {
         let authURL = String(format: "%@?client_id=%@&redirect_uri=%@&response_type=token&scope=%@&DEBUG=True", arguments: [INSTAGRAM_IDS.INSTAGRAM_AUTHURL,INSTAGRAM_IDS.INSTAGRAM_CLIENT_ID,INSTAGRAM_IDS.INSTAGRAM_REDIRECT_URI, INSTAGRAM_IDS.INSTAGRAM_SCOPE ])
         let urlRequest =  URLRequest.init(url: URL.init(string: authURL)!)
@@ -146,7 +154,6 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
         
     }
     
-    
     func assignbackground(){
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)
@@ -167,17 +174,13 @@ class LoginAndChangeMood2ViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        //loginIndicator.isHidden = false
         navigationItem.title = Settings().waitString
         loginWebView.backgroundColor = UIColor(patternImage: Settings().background!)
-        //loginIndicator.startAnimating()
         
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        //loginIndicator.isHidden = true
         if (internetSuccess) { navigationItem.title = "" }
-        //loginIndicator.stopAnimating()
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {

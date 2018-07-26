@@ -10,8 +10,12 @@ import UIKit
 
 class Welcome2ViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var accessToken = ""
     var right = 0, left = 0
+    
+    // MARK: - IBActions
     
     @IBAction func clearButton() {
         let storage : HTTPCookieStorage = HTTPCookieStorage.shared
@@ -22,6 +26,8 @@ class Welcome2ViewController: UIViewController {
         let loginAndChangeMoodVC = LoginAndChangeMood2ViewController(nibName: "LoginAndChangeMood2ViewController", bundle: nil)
         self.navigationController?.pushViewController(loginAndChangeMoodVC, animated: true)
     }
+    
+    // MARK: - BaseClass
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +66,8 @@ class Welcome2ViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = UIColor.clear
     }
+    
+    // MARK: - Internal Methods
     
     // Add a background view
     func assignbackground(){

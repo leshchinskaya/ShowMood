@@ -10,10 +10,11 @@ import UIKit
 
 class ImagesCollection2ViewCell: UICollectionViewCell {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var positiveValueLabel: UILabel!
     
+    // MARK: - Properties
     var photo: AnyObject! {
         didSet {
             InstagramData.imageForPhoto(photoDictionary: photo, size: "thumbnail") { (image) -> Void in

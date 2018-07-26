@@ -9,29 +9,35 @@
 import UIKit
 
 class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+     // MARK: - Constants
+    
+    let customCellIdentifier = "customCell"
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    private let trainedImageSize = CGSize(width: 227, height: 227)
+    private let leftAndRightPaddings: CGFloat = 32.0
+    private let numberOfItemsPerRow: CGFloat = 3.0
+    private let heightAdjustment: CGFloat = 30.0
+    
+    // MARK: - Properties
 
     private var imagesCell: ImagesCollection2ViewCell?
-    let customCellIdentifier = "customCell"
-    
-    @IBOutlet weak var collectionView: UICollectionView!
     
     var accessToken = ""
     var right = 0, left = 0
     var currentPositive = 0.0
     var positiveMas = [Double]()
     
-    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-    
-    private let trainedImageSize = CGSize(width: 227, height: 227)
-    
     private var photoDictionaries = [AnyObject]()
     private var photoDictionariesFiltered = [AnyObject]()
     private var img = [AnyObject]()
     var data: [[String: String?]] = []
     
-    private let leftAndRightPaddings: CGFloat = 32.0
-    private let numberOfItemsPerRow: CGFloat = 3.0
-    private let heightAdjustment: CGFloat = 30.0
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - BaseClass
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +51,6 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
         loadbackground()
         
         print (left, "..", right, " / accessToken = ", accessToken)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         // Configure the collection view
         let width = (collectionView!.frame.size.width - leftAndRightPaddings) / numberOfItemsPerRow
@@ -57,7 +61,8 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
         fetchPhotos()
     }
     
-    // MARK: - Helper Methods
+    // MARK: - Internal Methods
+    
     func fetchPhotos() {
         let session = URLSession.shared
         
@@ -76,15 +81,12 @@ class ShowImages3ViewController: UIViewController, UIImagePickerControllerDelega
                     
                     
                     for result in self.photoDictionaries {
-                        //let likes = result.value(forKeyPath: "likes.count") as! Int
-                        //let comment = result.value(forKeyPath: "comments.count") as! Int
-                        //let obj = ["comments": String(comment), "likes": String(likes)]
-                        
+            
                         let image = result.value(forKeyPath: "images.thumbnail.url") as! String
                         print(image)
                         
                         let urlImage = URL(string: image)
-                        let data = try? Data(contentsOf: urlImage!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        let data = try? Data(contentsOf: urlImage!)
                         let currentImage = UIImage(data: data!)
                         
                         self.predict(image: currentImage!)
@@ -161,13 +163,11 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
     // MARK: UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         //return self.photoDictionaries.count
         return self.photoDictionariesFiltered.count
     }
@@ -185,8 +185,7 @@ extension ShowImages3ViewController: UICollectionViewDataSource, UICollectionVie
         
         cell.photo = photoDictionary
         cell.label = "\(positive)%"
-        //if (left < 0) { left = 0 }
-        //navigationItem.title = "positive is \(left) .. \(right)%"
+        
         assignbackground()
         
         return cell

@@ -12,12 +12,21 @@ import Vision
 
 class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    @IBOutlet weak var positiveLabel: UILabel!
+    // MARK: - Constants
+    
+    let captureSession = AVCaptureSession()
+    
+    // MARK: - Properties
+    
     var positive = 0.0
     var left = 0, right = 0
     var accessToken = ""
     
-    let captureSession = AVCaptureSession()
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var positiveLabel: UILabel!
+    
+    // MARK: - BaseClass
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +69,8 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
             }
         }
     }
+    
+    // MARK: - Internal Methods
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
@@ -111,14 +122,6 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
         self.navigationController?.pushViewController(showImages3VC, animated: true)
     }
     
-    @IBAction func stopCameraButton() {
-        self.captureSession.stopRunning()
-        print("\n\n", self.positive)
-        self.diap()
-        print("stop Camera")
-        perfomValues()
-    }
-    
     func diap() {
         right = Int(positive + 10)
         left = Int(positive - 10)
@@ -134,5 +137,16 @@ class Camera2ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuf
         view.addSubview(imageView)
         self.view.sendSubview(toBack: imageView)
     }
+    
+    // MARK: - IBActions
+    
+    @IBAction func stopCameraButton() {
+        self.captureSession.stopRunning()
+        print("\n\n", self.positive)
+        self.diap()
+        print("stop Camera")
+        perfomValues()
+    }
+
     
 }
